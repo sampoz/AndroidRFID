@@ -1,0 +1,25 @@
+
+<form method="post" action="add">
+    <br />
+    Insert new user to database:
+    <div>
+        <input placeholder ="Name" type="text" name="name" />
+        <input placeholder="Money" type="text" name="money" />
+        <input type="submit" value="Add" />
+    </div>
+</form>
+
+<form method="post" action="finduser">
+    <br /> Search a user with a card ID:
+    <div>
+        <input placeholder="Card ID" type="text" name="cardID" />
+        <input type="submit" value="Search" />
+    </div>
+</form>
+
+<form method="GET" action="listusers">
+    <div>
+        <input type="submit" value="List all users">
+    </div>
+</form>
+<a href="/logout">Logout</a>
