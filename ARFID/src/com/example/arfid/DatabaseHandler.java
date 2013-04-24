@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.database.CursorIndexOutOfBoundsException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
  
 public class DatabaseHandler extends SQLiteOpenHelper {
  
@@ -49,7 +50,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // Create tables again
         onCreate(db);
     }
- 
+    public void dropDB(){
+    	SQLiteDatabase db = this.getWritableDatabase();
+    	db.execSQL("DROP TABLE IF EXISTS " + TABLE_CARDS);
+    	Log.d("db", "Dropped database");
+    	fix();
+    }
+    public void fix(){
+    	SQLiteDatabase db = this.getWritableDatabase();
+    	onCreate(db);
+    }
     /**
      * All CRUD(Create, Read, Update, Delete) Operations
      */
@@ -85,7 +95,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     IDCard getIDCardByCardID(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
         
-        IDCard card;
+        IDCard card=null;
 		try {
 			Cursor cursor = db.query(TABLE_CARDS, new String[] { KEY_ID,
 			        KEY_CARDID, KEY_USERID }, KEY_CARDID + "=?",
@@ -95,8 +105,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
  
 			card = new IDCard(Integer.parseInt(cursor.getString(0)),
 			        cursor.getString(1), cursor.getString(2));
+			Log.d("db cardid with dbid of ", cursor.getString(0));
+			Log.d("db cardid wit this id was fetchd", cursor.getString(1));
+			Log.d("db name was fetchd", cursor.getString(2));
+			cursor.close();
 		} catch (CursorIndexOutOfBoundsException e) {
 			// TODO Auto-generated catch block
+			Log.d("db something went wrong ", "badly");
 			return null;
 		}
         // return IDCard

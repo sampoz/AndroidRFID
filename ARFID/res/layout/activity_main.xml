@@ -1,6 +1,44 @@
-<android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/pager"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity" />
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:cursorVisible="true"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:text="Your name"
+        android:textIsSelectable="true" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/cardidtext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:text="Card Id" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dummy to catch enter" />
+
+    <Button
+        android:id="@+id/drop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Drop Database" />
+
+    <Button
+        android:id="@+id/add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add" />
+
+</LinearLayout>
